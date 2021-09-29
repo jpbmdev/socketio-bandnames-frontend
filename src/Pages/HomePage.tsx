@@ -1,6 +1,7 @@
-import { BandAdd } from "./components/BandAdd";
-import { BandList } from "./components/BandList";
-import { useSocketContext } from "./context/socketContext";
+import { BandAdd } from "../components/BandAdd";
+import BandChart from "../components/BandChart";
+import { BandList } from "../components/BandList";
+import { useSocketContext } from "../context/socketContext";
 
 function HomePage() {
   const { online } = useSocketContext();
@@ -20,6 +21,12 @@ function HomePage() {
 
       <h1>BandNames</h1>
       <hr />
+
+      <div className="row">
+        <div className="col">
+          <BandChart />
+        </div>
+      </div>
 
       <div className="row">
         <div className="col-8">
