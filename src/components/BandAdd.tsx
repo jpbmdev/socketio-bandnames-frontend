@@ -1,15 +1,14 @@
 import React, { useState } from "react";
+import { useSocketContext } from "../context/socketContext";
 
-interface Props {
-  crearBanda: (nombre: string) => void;
-}
-
-export const BandAdd: React.FC<Props> = (props) => {
+export const BandAdd: React.FC = () => {
+  const { socket } = useSocketContext();
   const [valor, setValor] = useState("");
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (valor.trim().length > 0) {
-      props.crearBanda(valor);
+      socket?.emit("crear-banda", { nombre: valor });
       setValor("");
     }
   };
